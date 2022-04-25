@@ -1,0 +1,67 @@
+{% extends 'EstudioApp/index.html' %}
+{% load static %}
+
+
+{% block index_header %}
+{% endblock index_header %}
+
+
+{% block index_noticias %}
+{% endblock index_noticias %}
+
+
+{% block new_content %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url({% static 'EstudioApp/assets/search.jpg' %})">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>Búsqueda</h1>
+                            <span class="subheading">Efectúe una búsqueda.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    <!-- Main Content-->
+    <main class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="my-5">
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- * * SB Forms Contact Form * *-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- This form is pre-integrated with SB Forms.-->
+                        <!-- To make this form functional, sign up at-->
+                        <!-- https://startbootstrap.com/solution/contact-forms-->
+                        <!-- to get an API token!-->
+                        <form id="searchForm" data-sb-form-api-token="API_TOKEN" action="{% url 'search' %}" method="get">
+                            {% csrf_token %}
+
+                            <table>
+                                {{buscador.as_table}}
+                            </table>
+
+                            <input type="submit" placeholder="Buscar">
+
+                        </form>
+                        {% if dato %}
+                            <div class="fw-bolder">Se realizó la búsqueda por: {{dato}}</div>
+
+                            {% for consulta in consultas_buscadas %}
+                                <li>
+                                    {{consulta}}
+                                </li>   
+                            {% endfor %}
+
+                        {% else %}
+                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error en la búsqueda!</div></div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock new_content %}

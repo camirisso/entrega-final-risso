@@ -1,0 +1,56 @@
+{% extends 'EstudioApp/index.html' %}
+{% load static %}
+
+
+{% block index_header %}
+{% endblock index_header %}
+
+
+{% block index_noticias %}
+{% endblock index_noticias %}
+
+
+{% block new_content %}
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url({% static 'EstudioApp/assets/btc.jpg' %})">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="post-heading">
+                        <h1>Criptomonedas y herencia.</h1>
+                        <h2 class="subheading">Un Juzgado Civil y Comercial de La Matanza emitió un despacho sucesorio con hipervínculos, entre los cuales detalla los requisitos de quienes quieran declarar sus "criptoactivos" en el acervo sucesorio.</h2>
+                        <span class="meta">
+                            Escrito por
+                            <a href="#!">F. Martínez Schulman</a>
+                            23 de Marzo, 2022
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Post Content-->
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <p>Las personas que tienen criptoactivos y buscan que sus herederos puedan disfrutarlos tienen que pensar en una herramienta para legarlos; se han perdido cientos de millones porque los poseedores murieron con la clave</p>
+                    <p>Hace un tiempo, un millonario se ahogó nadando en Costa Rica. Y a esta tragedia se sumó seguramente otra para sus familiares y allegados, ya que este pionero en el mercado de las criptomonedas se llevó consigo las claves para acceder a 1 millón de bitcoins, que eran de su propiedad.
+                    <p> Sin embargo, esta problemática que parece excéntrica será cada vez más común, ya que los criptoactivos, como bitcoin, son descentralizados, lo que significa que no existe un ente central que los gobierne y a través del cual se podría disponer de ellos post-mortem.</p>    
+                    <blockquote class="blockquote">"Esto último desafía la planificación patrimonial, ya que, en caso de querer reclamar una herencia, los herederos no podrán acudir a un juez para que mande a transferir y/o registrar estos activos como sí podrían hacerlo con el dinero de una cuenta bancaria, un bien inmueble u otros activos tradicionales."</blockquote>
+                    <p>Para Criptoactivos, el interesado deberá denunciar mediante declaración jurada y acreditar fehacientemente clase y tipo de criptoactivo (Criptomoneda – Token – NFT), así como también su cantidad; y el tipo de billetera (wallet), Broker u Exchange en que los mismos de encuentren depositados y su clave pública.</p>
+                    <p>También deberá presentar por escrito y en sobre cerrado (el cual será reservado en Secretaría) la clave privada o, en caso de corresponder el usuario y contraseña de dicha billetera o Broker u Exchange , respectivamente; y efectuar una presentación suscripta por la totalidad de los herederos indicando la forma de distribución de los mismos.</p>
+                    <p>La medida va en consonancia con el avance del uso de criptomonedas y billeteras virtuales en la sociedad, así como también la creciente utilización de hipervínculos para confeccionar resoluciones judiciales o proyectos.</p>
+                    <blockquote class="blockquote">"La medida va en consonancia con el avance del uso de criptomonedas y billeteras virtuales en la sociedad."</blockquote>
+                    <h2 class="section-heading">Nuestro consejo: mejor prevenir que curar</h2>
+                    <p>Una forma sencilla de resolver esto sería que la persona, en forma anticipada, dejara anotadas sus claves a la persona que quiera y esa persona podría acceder, por ejemplo, a la wallet donde están las criptos y disponer de ellas, pero ello podría no ser legal en algunos países en los cuales poderes otorgados en vida pierden validez cuando la persona muere</p>
+                    <a href="#!"><img class="img-fluid" src={% static 'EstudioApp/assets/contract.jpg' %} alt="..." /></a>
+                    <span class="caption text-muted">¿Testamento o smart contract?</span>
+                    <p>A efectos de que la sucesión testamentaria fluya con la menor controversia posible entre los herederos es necesario que el testamento describa en detalle no solo las contraseñas y claves privadas en cuestión, sino que dicha expresión tiene que ser realizada de tal manera que el testador se asegure de que nadie pueda tener acceso a los fondos salvo los herederos. Para ello, es necesario confeccionar dicho instrumento de tal manera que se protejan las claves privadas y que solamente los herederos puedan eventualmente utilizarlas.</p>
+                    <p>La otra opción, más bien de tipo tecnológico, consistiría en la utilización de smart contracts (o contratos inteligentes), que son líneas de código autoejecutables que funcionan con una estructura inalterable debido a que se despliegan en una red blockchain.</p>
+                    <p>Para mas información contáctenos.</p>
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock new_content %}
