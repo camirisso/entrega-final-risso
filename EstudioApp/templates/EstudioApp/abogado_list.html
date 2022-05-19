@@ -2,9 +2,8 @@
 {% load static %}
 
 
-{% block index_header %}    
-    <a href={% url 'abogados_list'%}>Listado de abogados</a>
-{% endblock index_header %} 
+{% block index_header %}
+{% endblock index_header %}
 
 
 {% block index_noticias %}
@@ -18,8 +17,8 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
-                            <h1>Abogado</h1>
-                            <span class="subheading">Complete su información.</span>
+                            <h1>Abogados</h1>
+                            <span class="subheading">Listado de abogados.</span>
                         </div>
                     </div>
                 </div>
@@ -31,19 +30,22 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="my-5">
-                        <!-- * * Crear abogado * *-->
-                        <form id="lawyerForm" data-sb-form-api-token="API_TOKEN" action="{% url 'abogado_create' %}" method="post">
-                            {% csrf_token %}
-                            <table>
-                                {{formulario_abogado.as_table}}
-                            </table>
-                            
-                            <br />
-                            <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Enviar</button>
-                        </form>
+
+                        <button class="btn btn-primary text-uppercase"><a href={% url 'abogado_form'%}>Crear un abogado</a></button>
+
+                        {% for abogado in object_list %}
+                            <li>
+                                {{abogado}}
+                                <button class="btn btn-primary text-uppercase"><a href={% url 'abogado_detail' abogado.id %}>Ver más...</a></button>
+                                <button class="btn btn-primary text-uppercase"><a href={% url 'abogado_update' abogado.id %}>Editar</a></button>
+                                <button class="btn btn-primary text-uppercase"><a href={% url 'abogado_confirm_delete' abogado.id %}>Borrar</a></button>
+                            </li>   
+                        {% endfor %}
+
+
                     </div>
                 </div>
-            </div>
+            </div>  
         </div>
     </main>
 {% endblock new_content %}

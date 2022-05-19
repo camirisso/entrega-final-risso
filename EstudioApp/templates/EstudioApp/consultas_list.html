@@ -12,13 +12,13 @@
 
 {% block new_content %}
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url({% static 'EstudioApp/assets/client.jpg' %})">
+        <header class="masthead" style="background-image: url({% static 'EstudioApp/assets/contact.jpg' %})">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
-                            <h1>Cliente</h1>
-                            <span class="subheading">Complete su información.</span>
+                            <h1>Consultas</h1>
+                            <span class="subheading">Listado de consultas.</span>
                         </div>
                     </div>
                 </div>
@@ -30,19 +30,23 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="my-5">
-                        <!-- * * Crear cliente * *-->
-                        <form id="clientForm" data-sb-form-api-token="API_TOKEN" action="{% url 'cliente_create' %}" method="post">
-                            {% csrf_token %}
-                            <table>
-                                {{formulario_cliente.as_table}}
-                            </table>
-                            
-                            <br />
-                            <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Enviar</button>
-                        </form>
+
+
+                        {% for consulta in consultas_list %}
+                            <li>
+                                {{consulta}}
+                                <button class="btn btn-primary text-uppercase"><a href={% url 'consulta_update' consulta.id %}>Editar</a></button>
+                                <button class="btn btn-primary text-uppercase"><a href={% url 'consulta_delete' consulta.id %}>Borrar</a></button>
+
+                            </li>   
+
+
+                        {% endfor %}
+
+
                     </div>
                 </div>
-            </div>
+            </div>  
         </div>
     </main>
 {% endblock new_content %}

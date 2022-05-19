@@ -18,7 +18,7 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
                             <h1>Búsqueda</h1>
-                            <span class="subheading">Efectúe una búsqueda.</span>
+                            <span class="subheading" >Efectúe una búsqueda.</span>
                         </div>
                     </div>
                 </div>
@@ -30,13 +30,6 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="my-5">
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
                         <form id="searchForm" data-sb-form-api-token="API_TOKEN" action="{% url 'search' %}" method="get">
                             {% csrf_token %}
 
@@ -44,7 +37,7 @@
                                 {{buscador.as_table}}
                             </table>
 
-                            <input type="submit" placeholder="Buscar">
+                            <button class="btn btn-primary text-uppercase" id="submitButton" placeholder="Buscar" type="submit">Buscar</button>
 
                         </form>
                         {% if dato %}
