@@ -2,8 +2,8 @@
 {% load static %}
 
 
-{% block index_header %}
-{% endblock index_header %}
+{% block index_header %}    
+{% endblock index_header %} 
 
 
 {% block index_noticias %}
@@ -17,7 +17,8 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
-                            <h1>Abogados</h1>
+                            <h1>Cargar Avatar</h1>
+                            <span class="subheading">En esta sección usted puede cargar o cambiar la imagen de su avatar.</span>
                         </div>
                     </div>
                 </div>
@@ -29,17 +30,20 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="my-5">
-
-                        <form method="post">
+                        <form method="POST" enctype="multipart/form-data">
+                    
                             {% csrf_token %}
-                            ¿Desea borrar este Abogado?
-                            <button class="btn btn-primary text-uppercase " id="submitButton" type="submit">Borrar</button>
-                        </form>       
-
+                            {{ miFormulario.as_p  }}
+                          
+                    
+                            <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Actualizar</button>
+                    
+                    
+                        </form>
 
                     </div>
                 </div>
-            </div>  
+            </div>
         </div>
     </main>
 {% endblock new_content %}

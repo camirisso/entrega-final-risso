@@ -31,13 +31,18 @@
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "Index" %}>Inicio</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "About" %}>Nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "consulta_create" %}>Consulta</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "clientes_list" %}>Cliente</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "abogado_list" %}>Abogado</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "search" %}>Búsqueda</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "posts" %}>Blog</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "add-post" %}>Crear post</a></li> 
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "accounts" %}>{{ user.get_username }}</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "edit_profile" %}>Editar Perfil</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "logout" %}>Logout</a></li>
+                        {% else %}
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "signup" %}>Signup</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "login" %}>Login</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href={% url "logout" %}>Logout</a></li>
+                        {% endif %}                      
                     </ul>
                 </div>
             </div>
@@ -60,76 +65,7 @@
                 </div>
             </div>
         </header>        
-        {% endblock index_header %}
-
-        {% block index_noticias %}
-        <!-- Noticias -->
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    {% if msj %}
-                        {{msj}}
-                    {% endif %} 
-                    <!-- Noticia con adelanto -->
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Criptomonedas y herencia.</h2>
-                            <h3 class="post-subtitle">Recientemente el Juzgado N° 9 Civil y Comercial de La Matanza ha detallado la documentación necesaria para presentar a efectos de inscribir la declaratoria de herederos con un ítem novedoso: "Criptoactivos". Ingresá a la nota y enterate de los requisitos para dejar registrado esos bienes para herencias.</h3>
-                        </a>
-                        <p class="post-meta">
-                            Escrito por
-                            <a href="#!">F. Martínez Schulman</a>
-                            23 de Marzo, 2022.
-                        </p>
-                    </div>
-                    <!-- División-->
-                    <hr class="my-4" />
-                    <!-- Noticia-->
-                    <div class="post-preview">
-                        <a href="post.html"><h2 class="post-title">Protección de los datos de los usuarios de Google.</h2></a>
-                        <p class="post-meta">
-                            Escrito por
-                            <a href="#!">M. López.</a>
-                            1 de Marzo, 2022
-                        </p>
-                    </div>
-                    <!-- División-->
-                    <hr class="my-4" />
-                    <!-- Noticia con adelanto-->
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Hostigamiento en redes.</h2>
-                            <h3 class="post-subtitle">Youtuber fue condenado por el delito de discriminar previsto en el artículo 65 el Código Contravencional.</h3>
-                        </a>
-                        <p class="post-meta">
-                            Escrito por
-                            <a href="#!">J. Pérez</a>
-                            22 de Febrero, 2022
-                        </p>
-                    </div>
-                    <!-- División-->
-                    <hr class="my-4" />
-                    <!-- Noticia con adelanto-->
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Un click no significa firma.</h2>
-                            <h3 class="post-subtitle">En los instrumentos generados por medios electrónicos, el requisito de la firma de una persona queda satisfecho si se utiliza una firma digital, que asegure indubitablemente la autoría e integridad del instrumento.</h3>
-                        </a>
-                        <p class="post-meta">
-                            Escrito por
-                            <a href="#!">F. Martínez Schulman</a>
-                            15 de Febrero, 2022
-                        </p>
-                    </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    <!-- Pager-->
-                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Noticias anteriores →</a></div>
-                </div>
-            </div>
-        </div>
-        {% endblock index_noticias %}
-        
+        {% endblock index_header %}        
         <!-- Footer-->
         <footer class="border-top">
             <div class="container px-4 px-lg-5">

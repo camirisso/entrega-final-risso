@@ -1,16 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-
-# Crear un formulario en django con una clase
-
-# CLASE DE FORMULARIO DE CONSULTA
-
-class ConsultaFormulario(forms.Form):
-    # Campos a completar // Input
-    nombre = forms.CharField(max_length=30)
-    consulta = forms.CharField(max_length=150)
-
+from .models import Post
 
 # CLASE DE FORMULARIO DE CLIENTE
 
@@ -34,14 +23,29 @@ class AbogadoFormulario(forms.Form):
 class BusquedaConsulta(forms.Form):
     partial_consulta = forms.CharField(label='Buscador', max_length=30)
 
-# Formulario registro usuarios
-
-class CreacionUsuario(UserCreationForm):
-    mail = forms.EmailField()
-    password1 = forms.CharField(label='Contraseña', widget= forms.PasswordInput())
-    password2 = forms.CharField(label='Repetir contraseña', widget= forms.PasswordInput())
-    
+class Postform(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ['username', 'mail', 'password1', 'password2']
-        help_texts = { k: '' for k in fields }
+        model = Post
+        fields = ('titulo', 'autor', 'publicado', 'subtitulo', 'body', 'imagen_portada')
+
+        widgets = {
+            'titulo': forms.TextInput(),
+            'autor': forms.Select(),
+            'publicado': forms.TextInput(),
+            'subtitulo': forms.TextInput(),
+            'body': forms.Textarea(),
+        }
+
+class EditForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('titulo', 'subtitulo', 'body')
+        widgets = {
+            'titulo': forms.TextInput(),
+            'subtitulo': forms.TextInput(),
+            'body': forms.Textarea(),
+        }
+
+class AvatarFormulario(forms.Form):
+  
+    imagen = forms.ImageField(required=True)

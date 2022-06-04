@@ -1,0 +1,59 @@
+{% extends 'EstudioApp/index.html' %}
+{% load static %}
+
+
+{% block index_header %}    
+{% endblock index_header %} 
+
+
+{% block index_noticias %}
+{% endblock index_noticias %}
+
+
+{% block new_content %}
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url({% static 'EstudioApp/assets/search.jpg' %})">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="page-heading">
+                        <h1>Noticias</h1>
+                        <span class="subheading">Aquí encontrarás el análisis técnico de todas las novedades en derecho y tecnología.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content-->
+    <main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-preview">
+                    {% for post in object_list %}
+                    <div class="post-preview">
+                        <a href="{%url 'article-detail' post.pk %}">
+                            <h2 class="post-title">{{post.titulo}}</h2>
+                            <h3 class="post-subtitle">{{post.subtitulo}}</h3>
+                        </a>
+                        <p class="post-meta">
+                            Escrito por
+                            <a href="#!">{{post.autor.nombre}} {{post.autor.apellido}}</a>
+                            {{post.publicado}}
+                        </br>
+                            {% if user.is_authenticated %}
+                                {% if user.id == post.autor.id %}
+                                    <button class="btn btn-primary text-uppercase " id="submitButton" type="submit"><a href="{%url 'update-post' post.pk %}">Editar post</a></button>
+                                    <button class="btn btn-primary text-uppercase " id="submitButton" type="submit"><a href="{%url 'delete-post' post.pk %}">Borrar post</a></button>
+                                {% endif %}
+                            {% endif %}
+                        </p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+
+{% endblock new_content %}

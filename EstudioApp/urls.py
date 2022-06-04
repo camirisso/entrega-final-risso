@@ -1,22 +1,19 @@
 from django.urls import path
 from EstudioApp import views 
-from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('', views.inicio, name="Index"),
     path('about/', views.about,  name="About"),
 
-    # CONSULTAS 
-    # Leer consulta:
-    path('form/list', views.consultas_list, name='consultas_list'),
-    # Crear consulta:
-    path('form/create', views.consulta_create, name='consulta_create'),
-    # Actualizar consulta:
-    path('form/update/<int:id>/', views.consulta_update, name='consulta_update'),
-    # Borrar consulta:
-    path('form/delete/<int:id>/', views.consulta_delete, name='consulta_delete'),
-    # Url para búsqueda de consulta:
-    path('search/', views.search, name='search'),
+    # AVATAR
+    path('agregar-avatar', views.agregarAvatar, name = "agregar-avatar"),
+
+    # POST urls
+    path('posts/', views.PostView.as_view(),  name="posts"),
+    path('articulo/<int:pk>', views.ArticleDetailView.as_view(),  name="article-detail"),
+    path('add_post/', views.AddPostView.as_view(),  name="add-post"), 
+    path('articulo/update/<int:pk>', views.UpdatePostView.as_view(),  name="update-post"), 
+    path('articulo/<int:pk>/delete', views.DeletePostView.as_view(),  name="delete-post"), 
 
     # ABOGADO
     # CreateView
@@ -29,14 +26,6 @@ urlpatterns = [
     path('abogados/<int:pk>/update/', views.AbogadoActualizar.as_view(), name="abogado_update"),
     # DeleteView
     path('abogados/<int:pk>/delete/', views.AbogadoBorrar.as_view(), name="abogado_confirm_delete"),
-    # Leer abogado
-    #path('lawyer/list', views.abogados_list, name='abogados_list'),
-    # Crear abogado:
-    #path('lawyer/create', views.abogado_create, name='abogado_create'),
-    # Actualizar abogado:
-    #path('lawyer/update/<int:id>/', views.abogado_update, name='abogado_update'),
-    # Borrar abogado:
-    #path('lawyer/delete/<int:id>/', views.abogado_delete, name='abogado_delete'),
 
     # CLIENTE
     # Leer cliente:
@@ -47,11 +36,4 @@ urlpatterns = [
     path('client/update/<int:id>/', views.cliente_update, name='cliente_update'),
     # Borrar cliente:
     path('client/delete/<int:id>/', views.cliente_delete, name='cliente_delete'),
-
-    # SIGNUP
-    path('signup/', views.signup_estudio, name = 'signup'),
-    # LOGIN
-    path('login/', views.login_estudio, name = 'login'),
-    # LOGIN
-    path('logout/', LogoutView.as_view(template_name='EstudioApp/index.html'), name = 'logout')
 ]

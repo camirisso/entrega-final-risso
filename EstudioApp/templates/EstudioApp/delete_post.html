@@ -1,0 +1,62 @@
+{% extends 'EstudioApp/index.html' %}
+{% load static %}
+
+
+{% block index_header %}
+{% endblock index_header %}
+
+
+{% block index_noticias %}
+{% endblock index_noticias %}
+
+
+{% block new_content %}
+    {% if user.is_authenticated %}
+        {% if user.id == post.autor.id %} 
+            <!-- Page Header-->
+            <header class="masthead" style="background-image: url({% static 'EstudioApp/assets/contact.jpg' %})">
+                <div class="container position-relative px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="page-heading">
+                                <h1>Eliminar post</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="my-5">
+                            <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST">
+                                <div class="form-floating">
+                                    {% csrf_token %}
+                                    <span class="subheading">¿Deseas eliminar el post: {{post.titulo}} de {{post.autor.nombre}} {{post.autor.apellido}}?</span>
+                                </div>
+                                <br />
+                                <button class="btn btn-primary text-uppercase " id="submitButton" type="submit">Borrar post!</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        {% endif %}
+    {% else %}
+    <header class="masthead" style="background-image: url({% static 'EstudioApp/assets/contact.jpg' %})">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="page-heading">
+                        <h1>No estás autorizado para entrar acá!</h1>
+                        <span class="subheading">(Y lo sabés...)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    {% endif %}
+{% endblock new_content %}

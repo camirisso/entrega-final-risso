@@ -1,0 +1,52 @@
+{% extends 'EstudioApp/index.html' %}
+{% load static %}
+
+
+{% block index_header %}
+{% endblock index_header %}
+
+
+{% block index_noticias %}
+{% endblock index_noticias %}
+
+
+{% block new_content %}
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url({% static 'EstudioApp/assets/contact.jpg' %})">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="post-heading">
+                        <h1>{{post.titulo}}</h1>
+                        <h2 class="subheading">{{post.subtitulo}}</h2>
+                        <span class="meta">
+                            Escrito por
+                            <a href="#!">{{post.autor.nombre}} {{post.autor.apellido}}</a>
+                            {{post.publicado}}
+                        </span>
+                        {% if user.is_authenticated %}
+                            {% if user.id == post.autor.id %}
+                                <button class="btn btn-primary text-uppercase " id="submitButton" type="submit"><a href="{%url 'update-post' post.pk %}">Editar post</a></button>
+                                <button class="btn btn-primary text-uppercase " id="submitButton" type="submit"><a href="{%url 'delete-post' post.pk %}">Borrar post</a></button>
+                            {% endif %}
+                        {% endif %}
+                        {{post.body|safe}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Post Content-->
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    {{ post.imagen_portada.url }}<br/><br/>
+                    <p>
+                        {{post.body}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock new_content %}
